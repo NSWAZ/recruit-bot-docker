@@ -1,4 +1,4 @@
-FROM node:22-alpine AS build
+FROM node:25-alpine AS build
 WORKDIR /usr/src/app
 COPY ./package.json ./
 RUN npm install
@@ -6,7 +6,7 @@ COPY ./src ./src
 COPY ./tsconfig.json ./
 RUN npm run build
 
-FROM node:22-alpine AS install
+FROM node:25-alpine AS install
 WORKDIR /usr/src/app
 COPY ./package.json ./
 RUN npm install --omit=dev
